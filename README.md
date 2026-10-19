@@ -1,70 +1,75 @@
-![Banner](Imagenes/banner.png)
+![Banner](imagenes/MRI.png)
 
-# Visión por Computador - Escuela de Primavera 2026 UNAB
+# Laboratorio de Imágenes - Magíster en Física Médica UC
 
-Este repositorio contiene el material e itinerario para las clases prácticas del curso de **Visión por Computador**, dictado en la **Escuela de Primavera de la Universidad Andrés Bello (UNAB)**. El diseño curricular y los laboratorios han sido desarrollados por **Pamela Franco**.
+Este repositorio contiene el material, guías de laboratorio e itinerario para las sesiones prácticas del curso de **Laboratorio de Imágenes**, dictado en el **Magíster en Física Médica de la Pontificia Universidad Católica de Chile (UC)**. El diseño curricular y el desarrollo de los entornos computacionales han sido creados por **Pamela Franco**.
 
-El curso está especialmente diseñado para estudiantes y profesionales de las ciencias exactas e ingeniería (**Físicos, Astrónomos e Ingenieros Físicos**), abordando la disciplina desde una perspectiva formal, matemática, geométrica y computacional en Python.
+El curso está orientado a estudiantes de posgrado en física médica y disciplinas afines, abordando el procesamiento, la reconstrucción, la caracterización microestructural y el análisis computacional de imágenes médicas (con énfasis en Resonancia Magnética) desde una perspectiva formal, física y cuantitativa en Python.
 
 ---
 
 ## Acceso Directo a los Laboratorios (Google Colab)
 
-Haz clic en los siguientes botones para abrir directamente los entornos interactivos de cada clase y comenzar a trabajar:
+Haz clic en los botones de la tabla para abrir directamente los cuadernos interactivos en Google Colab:
 
 | Clase / Laboratorio | Botón de Acceso |
 | :--- | :--- |
-| **Práctico 0.a:** Animación de Convolución | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/vision_computador_UNAB/blob/main/Codigos/Animacion_Convolucion_rects.ipynb) |
-| **Práctico 0.b:** Curiosidad y Aplicación: El Sistema Visual Humano como un Procesador de Señales | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/vision_computador_UNAB/blob/main/Codigos/FT_ojo_humano.ipynb) |
-| **Práctico 1:** Fundamentos Matemáticos y Computacionales de la Visión por Computador | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/vision_computador_UNAB/blob/main/Codigos/vision_por_computador1.ipynb) |
-| **Práctico 2:** Geometría Proyectiva y Calibración de Sistemas Ópticos | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/vision_computador_UNAB/blob/main/Codigos/vision_por_computador2.ipynb) |
-| **Práctico 3:** Deep Learning I - Clasificación y Detección de Objetos (CNN & YOLO) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/vision_computador_UNAB/blob/main/Codigos/vision_por_computador3.ipynb) |
-| **Práctico 4:** Deep Learning II - Segmentación y Modelos Avanzados (U-Net & Transformers) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/vision_computador_UNAB/blob/main/Codigos/vision_por_computador4.ipynb) |
----
-
-## Estructura Teórica y Descripción del Curso
-
-El programa está estructurado para conectar las teorías clásicas de la óptica y la geometría formal con la visión por computador moderna, el procesamiento tensorial y las arquitecturas de aprendizaje profundo de última generación.
-
-### 1. Procesamiento vs. Análisis de Imágenes
-Se introduce formalmente la imagen como un operador matemático y como una matriz discreta de intensidades $I(x,y)$.
-* **Procesamiento de Imágenes:** Algoritmos de entrada y salida de imágenes para restauración, filtrado lineal, convoluciones espaciales o mejora del contraste (ej. reducción de ruido térmico en sensores CCD).
-* **Análisis de Imágenes:** Extracción de mediciones cuantitativas y reducción dimensional a partir de una escena (ej. fotometría o conteo de fuentes).
-* **Visión por Computador:** Adquisición, procesamiento y comprensión profunda de datos bidimensionales y de alta dimensión para producir información simbólica y decisiones automatizadas.
-
-### 2. Geometría Proyectiva y Óptica de la Cámara
-Un recorrido por los hitos que permitieron modelar el espacio tridimensional mediante ecuaciones algebraicas lineales computables:
-* Las bases geométricas de la perspectiva lineal, el plano cartesiano $(X, Y, Z)$ y las coordenadas homogéneas.
-* El **Modelo de Cámara Pinhole** y la estimación de la matriz de proyección computacional.
-* Parámetros **Intrínsecos** (distancia focal, punto principal, distorsión geométrica de lentes) y **Extrínsecos** (rotación y traslación en el espacio de tres dimensiones).
-
-### 3. El Paradigma de Deep Learning en Ciencias Exactas
-Transición desde los descriptores hechos a mano (*handcrafted features*) hacia la extracción automatizada y jerárquica de características complejas:
-* **Redes Neuronales Convolucionales (CNN):** Procesamiento local invariantivo a la traslación mediante kernels optimizables.
-* **Detección y Localización (YOLO):** Regresión directa de cajas delimitadoras (*bounding boxes*) y cálculo de métricas de precisión como *Intersection over Union* (IoU).
-* **Segmentación Semántica (U-Net):** Arquitecturas con conexiones de salto (*skip connections*) para preservar la resolución espacial de estructuras complejas (ej. lesiones médicas o perfiles astronómicos).
-* **Vision Transformers (ViT):** Aplicación de mecanismos de auto-atención (*self-attention*) para capturar dependencias globales no locales en imágenes.
-
-```text
-Objeto Real ──> Adquisición Óptica ──> Imagen I(x,y) ──> Convoluciones/Filtros ──> Redes Convolucionales ──> Segmentación/Detección ──> Decisión Científica
-
-```
-
+| **Práctico 1:** Adquisición y Reconstrucción en el Espacio $k$ (`EspacioK.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/EspacioK.ipynb) |
+| **Práctico 2:** Simulación de Secuencias de Resonancia Magnética (`simulador_secuencias.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/simulador_secuencias.ipynb) |
+| **Práctico 3:** Segmentación Anatómica y Funcional (`segmentation.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/segmentation.ipynb) |
+| **Práctico 4:** Imágenes de Tensores de Difusión y Mapas Cuantitativos (`DTI_mapas_difusion.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/DTI_mapas_difusion.ipynb) |
+| **Práctico 5:** Extracción de Características Radiómicas (`radiomics.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/radiomics.ipynb) |
+| **Práctico 6:** Clasificación y Diagnóstico Avanzado de Gliomas (`Glioma_classification.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/Glioma_classification.ipynb) |
 
 ---
 
-## Requisitos e Instalación
+## Estructura Teórica y Contenidos del Curso
 
-Para ejecutar los cuadernos de manera local, asegúrate de clonar el repositorio e instalar Python 3 junto con las siguientes dependencias científicas:
+El programa abarca desde la física fundamental de formación de imágenes en Resonancia Magnética (RM) hasta técnicas de inteligencia artificial y radiómica aplicadas al diagnóstico neuro-oncológico:
+
+### 1. Reconstrucción y Muestreo en el Espacio $k$
+- Mapeo de la señal RMN mediante gradientes de campo magnético.
+- Dominio de frecuencias espaciales y Transformada de Fourier 2D.
+- Submuestreo, artefactos de *aliasing*, filtrado de frecuencias y reconstrucción de imágenes.
+
+### 2. Simulación de Secuencias de Resonancia Magnética
+- Modelamiento matemático de los tiempos de relajación tisular ($T_1$, $T_2$ y $T_2^*$).
+- Ecuaciones de Bloch para secuencias clásicas (*Spin Echo*, *Gradient Echo*).
+- Manipulación de tiempo de repetición ($\text{TR}$), tiempo de eco ($\text{TE}$) y ángulo de inclinación (*flip angle*) para generación de contraste tisular.
+
+### 3. Segmentación Anatómica y Funcional
+- Algoritmos de umbralización adaptativa (Otsu) y filtrado morfológico.
+- Transformada de Distancia Euclidiana (EDT) y segmentación por *Watershed*.
+- Separación de estructuras vasculares y de tejidos blandos en imágenes médicas.
+
+### 4. Tensores de Difusión (DTI) y Microestructura
+- Física del movimiento browniano de moléculas de agua en tejidos biológicos.
+- Estimación del tensor de difusión a partir de gradientes de codificación.
+- Cálculo de métricas cuantitativas microestructurales: Anisotropía Fraccionada ($\text{FA}$), Difusividad Media ($\text{MD}$), Axial ($\text{AD}$) y Radial ($\text{RD}$).
+
+### 5. Radiómica y Biomarcadores Cuantitativos
+- Extracción de características fenotípicas de alto rendimiento a partir de regiones de interés (ROI).
+- Descriptores de forma, intensidad de primer orden y matrices de textura de segundo orden ($\text{GLCM}$, $\text{GLRLM}$, $\text{GLSZM}$).
+- Estandarización de características radiómicas para análisis de soporte a la decisión clínica.
+
+### 6. Aprendizaje Profundo y Clasificación Neuro-Oncológica (Gliomas)
+- Procesamiento de imágenes volumétricas multimodales (T1, T1-CE, T2, FLAIR).
+- Clasificación de tumores cerebrales (gliomas de alto y bajo grado) mediante arquitecturas avanzadas de Deep Learning.
+- Evaluación del rendimiento mediante métricas de validación clínica ($\text{Accuracy}$, $\text{AUC-ROC}$, $\text{F1-score}$).
+
+
+## Requisitos e Instalación Local
+
+Para ejecutar los cuadernos de manera local en tu equipo, clona el repositorio e instala las dependencias necesarias:
 
 ```bash
-git clone [https://github.com/pamelaFranco/vision_computador_UNAB.git](https://github.com/pamelaFranco/vision_computador_UNAB.git)
-cd vision_computador_UNAB
-pip install numpy opencv-python matplotlib requests torch torchvision
-
+git clone [https://github.com/pamelaFranco/Laboratorio-Imagenes.git](https://github.com/pamelaFranco/Laboratorio-Imagenes.git)
+cd Laboratorio-Imagenes/codigos
+pip install numpy scipy matplotlib opencv-python pydicom SimpleITK pyradiomics torch torchvision
 ```
 
-> **Nota:** Para los cuadernos 3 y 4 que utilizan arquitecturas de Deep Learning, se recomienda fuertemente el uso de entornos con aceleración por GPU (disponibles de forma gratuita en los enlaces de Google Colab de arriba).
+
+> **Nota:** Para los cuadernos de DTI, Radiómica y Clasificación de Gliomas, se recomienda el uso de Google Colab con aceleración por GPU.
 ---
 
 ## License
