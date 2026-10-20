@@ -16,10 +16,11 @@ Haz clic en los botones de la tabla para abrir directamente los cuadernos intera
 | :--- | :--- |
 | **Práctico 1:** Adquisición y Reconstrucción en el Espacio $k$ (`EspacioK.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/EspacioK.ipynb) |
 | **Práctico 2:** Simulación de Secuencias de Resonancia Magnética (`simulador_secuencias.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/simulador_secuencias.ipynb) |
-| **Práctico 3:** Segmentación Anatómica y Funcional (`segmentation.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/segmentation.ipynb) |
-| **Práctico 4:** Imágenes de Tensores de Difusión y Mapas Cuantitativos (`DTI_mapas_difusion.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/DTI_mapas_difusion.ipynb) |
-| **Práctico 5:** Extracción de Características Radiómicas (`radiomics.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/radiomics.ipynb) |
-| **Práctico 6:** Clasificación y Diagnóstico Avanzado de Gliomas (`Glioma_classification.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/Glioma_classification.ipynb) |
+| **Práctico 3:** Registro de Imágenes Médicas y Fusión Multimodal (`registration.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/registration.ipynb) |
+| **Práctico 4:** Segmentación Anatómica y Funcional (`segmentation.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/segmentation.ipynb) |
+| **Práctico 5:** Imágenes de Tensores de Difusión y Mapas Cuantitativos (`DTI_mapas_difusion.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/DTI_mapas_difusion.ipynb) |
+| **Práctico 6:** Extracción de Características Radiómicas (`radiomics.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/radiomics.ipynb) |
+| **Práctico 7:** Clasificación y Diagnóstico Avanzado de Gliomas (`Glioma_classification.ipynb`) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pamelaFranco/Laboratorio-Imagenes/blob/main/codigos/Glioma_classification.ipynb) |
 
 ---
 
@@ -37,22 +38,27 @@ El programa abarca desde la física fundamental de formación de imágenes en Re
 - Ecuaciones de Bloch para secuencias clásicas (*Spin Echo*, *Gradient Echo*).
 - Manipulación de tiempo de repetición ($\text{TR}$), tiempo de eco ($\text{TE}$) y ángulo de inclinación (*flip angle*) para generación de contraste tisular.
 
-### 3. Segmentación Anatómica y Funcional
+### 3. Registro de Imágenes Médicas y Fusión Multimodal
+- Matrices de transformación espacial ($SFORM/QFORM$), coordenadas físicas y re-muestreo por interpolación.
+- Evaluación de algoritmos de alineación rígidos, afines y difeomórficos no lineales (**SyN**).
+- Corrección de distorsiones por susceptibilidad magnética (EPI) y fusión limpia T1 vs DTI (FA) para preservación anatómica.
+
+### 4. Segmentación Anatómica y Funcional
 - Algoritmos de umbralización adaptativa (Otsu) y filtrado morfológico.
 - Transformada de Distancia Euclidiana (EDT) y segmentación por *Watershed*.
 - Separación de estructuras vasculares y de tejidos blandos en imágenes médicas.
 
-### 4. Tensores de Difusión (DTI) y Microestructura
+### 5. Tensores de Difusión (DTI) y Microestructura
 - Física del movimiento browniano de moléculas de agua en tejidos biológicos.
 - Estimación del tensor de difusión a partir de gradientes de codificación.
 - Cálculo de métricas cuantitativas microestructurales: Anisotropía Fraccionada ($\text{FA}$), Difusividad Media ($\text{MD}$), Axial ($\text{AD}$) y Radial ($\text{RD}$).
 
-### 5. Radiómica y Biomarcadores Cuantitativos
+### 6. Radiómica y Biomarcadores Cuantitativos
 - Extracción de características fenotípicas de alto rendimiento a partir de regiones de interés (ROI).
 - Descriptores de forma, intensidad de primer orden y matrices de textura de segundo orden ($\text{GLCM}$, $\text{GLRLM}$, $\text{GLSZM}$).
 - Estandarización de características radiómicas para análisis de soporte a la decisión clínica.
 
-### 6. Aprendizaje Profundo y Clasificación Neuro-Oncológica (Gliomas)
+### 7. Aprendizaje Profundo y Clasificación Neuro-Oncológica (Gliomas)
 - Procesamiento de imágenes volumétricas multimodales (T1, T1-CE, T2, FLAIR).
 - Clasificación de tumores cerebrales (gliomas de alto y bajo grado) mediante arquitecturas avanzadas de Deep Learning.
 - Evaluación del rendimiento mediante métricas de validación clínica ($\text{Accuracy}$, $\text{AUC-ROC}$, $\text{F1-score}$).
