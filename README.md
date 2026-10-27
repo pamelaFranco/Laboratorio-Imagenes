@@ -32,9 +32,29 @@ El programa abarca segmentación y registro en MRI:
 - **Control de calidad visual y evaluación de alineación:** Validación del registro multimodal mediante superposición de bordes (`add_edges`) y visualización en damero (*checkerboard*) entre los mapas de Fracción de Anisotropía (FA) y la imagen T1 con contraste.
 
 ## 2. Segmentación Anatómica y Caracterización Tisular
-- **Caracterización clínica de sustancia blanca:** Fusión de mapas DTI (FA) sobre anatomía T1 para clasificar el compromiso tumoral en gliomas en tres patrones clínicos: desplazamiento de tractos, edema vasogénico e infiltración/destrucción de fibras.
-- **Procesamiento mediante umbralización adaptativa:** Aplicación de algoritmos de umbralización (Otsu) y filtrado morfológico para la separación de tejidos blandos y estructuras vasculares.
-- **Detección de fronteras y segmentación por *Watershed*:** Uso de la Transformada de Distancia Euclidiana (EDT) combinada con el algoritmo de cuenca hidrográfica (*watershed*) para la delimitación precisa de contornos tisulares complejos.
+
+El proceso de segmentación en imágenes de Phase Contrast (PC) permite delimitar la geometría aórtica y separar las estructuras anatómicas del tejido circundante. La segmentación opera sobre dos dominios de entrada según el objetivo del análisis:
+
+* **Magnitud Anatómica (`abs(s)`):** Trabaja con la intensidad de magnetización transversal ($|S|$). Permite delimitar la estructura real y la pared del vaso independientemente de la velocidad del flujo.
+* **Fase Funcional / Velocidad (`|u|`):** Trabaja sobre el mapa de velocidades ($|u|$). Aísla exclusivamente el núcleo dinámico del flujo cancelando el tejido estático (subestimando el área aórtica cerca de la pared por efectos viscosos).
+
+### Algoritmos de Segmentación Implementados
+
+1. **Umbralización de Otsu (`threshold_otsu`)**
+   * **Función:** Calcula automáticamente el umbral óptimo maximizando la varianza interclase del histograma de la imagen.
+   * **Aplicación:** Separa el vaso aórtico hiperintenso del fondo en la imagen de magnitud, o define el nivel de corte de velocidad activa en la imagen de fase.
+
+2. **Transformada de Distancia**
+   * **Función:** Calcula la distancia euclidiana de cada píxel en primer plano respecto al borde binario más cercano.
+   * **Aplicación:** Encuentra los máximos locales dentro del vaso para generar los puntos semilla (*seeds*) y marcadores internos indispensables para desacoplar el contorno aórtico.
+
+3. **Algoritmo Watershed (Cuenca Hidrográfica)**
+   * **Función:** Trata el gradiente de la imagen como una superficie topográfica e "inunda" la región desde las semillas previamente detectadas.
+   * **Aplicación:** Separa la aorta de vasos adyacentes o estructuras contiguas que comparten niveles de gris o intensidades similares tras el umbralizado.
+
+4. **Transformada de Hough (Detección de Círculos)**
+   * **Función:** Transforma el espacio de bordes a un espacio paramétrico para detectar geometrías circulares u ovoides.
+   * **Aplicación:** Inicializa o valida la posición del centroide y la estimación del radio aórtico antes de refinar los contornos finales.
 
 ---
 
