@@ -24,15 +24,17 @@ Haz clic en los botones de la tabla para abrir directamente los cuadernos intera
 El programa abarca segmentación y registro en MRI:
 
 
-### 1. Registro de Imágenes Médicas y Fusión Multimodal
-- Matrices de transformación espacial ($SFORM/QFORM$), coordenadas físicas y re-muestreo por interpolación.
-- Evaluación de algoritmos de alineación rígidos, afines y difeomórficos no lineales (**SyN**).
-- Corrección de distorsiones por susceptibilidad magnética (EPI) y fusión limpia T1 vs DTI (FA) para preservación anatómica.
+## 1. Registro de Imágenes Médicas y Fusión Multimodal
+- **Modelado geométrico y coordenadas físicas:** Uso de matrices homogéneas afines de $4 \times 4$ ($SFORM/QFORM$) para mapear el espacio discreto de vóxeles $(i, j, k)$ al espacio físico contiguo en milímetros $(x, y, z)$ según convenciones anatómicas como RAS o LPS.
+- **Parámetros de adquisición e interpolación:** Integración de secuencias anatómicas isotrópicas de alta resolución (T1 FSPGR 3D de $0.94 \times 0.94 \times 1.20\text{ mm}^3$) con secuencias de difusión (DTI EPI con 25 direcciones no colineales y $b = 1000\text{ s/mm}^2$) mediante re-muestreo por interpolación (`nilearn.image.resample_to_img`) a vóxeles de $2 \times 2 \times 2\text{ mm}^3$.
+- **Transformaciones espaciales rígidas y afines:** Corrección del movimiento del paciente mediante matrices rígidas de 6 grados de libertad (rotaciones compuestas $R = R_z(\gamma) R_y(\beta) R_x(\alpha)$ y vector de traslación $T$) y transformaciones afines de 12 grados de libertad para ajustar escalado y cizallamiento (*shear*).
+- **Corrección de distorsión EPI y referencia anatómica:** Corrección de artefactos por susceptibilidad magnética en interfaces aire-hueso de secuencias EPI utilizando el volumen T1 FSPGR como referencia anatómica (*Gold Standard*) y alineando sobre la Comisura Anterior (AC) como origen coordenado.
+- **Control de calidad visual y evaluación de alineación:** Validación del registro multimodal mediante superposición de bordes (`add_edges`) y visualización en damero (*checkerboard*) entre los mapas de Fracción de Anisotropía (FA) y la imagen T1 con contraste.
 
-### 2. Segmentación Anatómica y Funcional
-- Algoritmos de umbralización adaptativa (Otsu) y filtrado morfológico.
-- Transformada de Distancia Euclidiana (EDT) y segmentación por *Watershed*.
-- Separación de estructuras vasculares y de tejidos blandos en imágenes médicas.
+## 2. Segmentación Anatómica y Caracterización Tisular
+- **Caracterización clínica de sustancia blanca:** Fusión de mapas DTI (FA) sobre anatomía T1 para clasificar el compromiso tumoral en gliomas en tres patrones clínicos: desplazamiento de tractos, edema vasogénico e infiltración/destrucción de fibras.
+- **Procesamiento mediante umbralización adaptativa:** Aplicación de algoritmos de umbralización (Otsu) y filtrado morfológico para la separación de tejidos blandos y estructuras vasculares.
+- **Detección de fronteras y segmentación por *Watershed*:** Uso de la Transformada de Distancia Euclidiana (EDT) combinada con el algoritmo de cuenca hidrográfica (*watershed*) para la delimitación precisa de contornos tisulares complejos.
 
 ---
 
@@ -46,8 +48,6 @@ cd Laboratorio-Imagenes/codigos
 pip install numpy scipy matplotlib opencv-python pydicom SimpleITK pyradiomics torch torchvision
 ```
 
-
-> **Nota:** Para los cuadernos de DTI, Radiómica y Clasificación de Gliomas, se recomienda el uso de Google Colab con aceleración por GPU.
 ---
 
 ## License
